@@ -1,0 +1,37 @@
+import urllib.request
+import json
+
+url = "https://api.opap.gr/draws/v3.0/1100/last-result-and-active"     #τελευταία κλήρωση
+
+def nag(lst):
+    info = urllib.request.urlopen(url)
+
+    html = info.read()
+    html = html.decode()
+
+    data = json.loads(html)
+    winningNumbers = data["last"]["winningNumbers"]["list"]
+
+    lst1 = []
+    for i in lst:
+        if(i in winningNumbers ):
+            lst1.append(i)
+
+        elif(i-1 in winningNumbers):
+            x = i - 1
+            lst1.append(i)
+
+        elif(i+1 in winningNumbers):
+            y = i+1
+            lst1.append(i)
+    print(len(lst1))
+
+
+nag([50,1,2,70,0])              #Επιστρέφει 4 
+
+
+
+
+
+
+
