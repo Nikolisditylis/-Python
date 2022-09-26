@@ -1,0 +1,23 @@
+def gargamel(a,b):
+    
+   
+    result = []
+    
+    
+    for c in range(a, b+1):
+        singles= [int(d) for d in str(c)]
+        
+        number = 0 
+        e = 1 
+        
+        for x in singles:
+            cal = pow(x ,e)
+            e = e +1 
+            number = number + cal
+        
+        if number == c:
+            result.append(number)
+    
+    print(result)        
+
+    
